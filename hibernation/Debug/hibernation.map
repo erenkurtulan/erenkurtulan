@@ -1,0 +1,187 @@
+******************************************************************************
+                  TI ARM Linker PC v18.1.3                     
+******************************************************************************
+>> Linked Sat Jan 18 23:16:57 2025
+
+OUTPUT FILE NAME:   <hibernation.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000006d1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000884  0003f77c  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000884   00000884    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    000005ac   000005ac    r-x .text
+  00000818    00000818    0000006c   0000006c    r-- .const
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    000005ac     
+                  0000026c    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  0000039e    00000002     --HOLE-- [fill = 0]
+                  000003a0    00000110                   : sysctl.obj (.text:SysCtlClockGet)
+                  000004b0    000000f4                   : sysctl.obj (.text:SysCtlClockSet)
+                  000005a4    00000094     main.obj (.text)
+                  00000638    00000064     driverlib.lib : hibernate.obj (.text:HibernateWakeSet)
+                  0000069c    00000034                   : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  000006d0    00000030     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000700    0000002c     driverlib.lib : hibernate.obj (.text:HibernateRTCSet)
+                  0000072c    0000002a                   : gpio.obj (.text:GPIODirModeSet)
+                  00000756    00000018                   : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  0000076e    00000002     --HOLE-- [fill = 0]
+                  00000770    00000018                   : hibernate.obj (.text:HibernateGPIORetentionEnable)
+                  00000788    00000014                   : hibernate.obj (.text:HibernateEnableExpClk)
+                  0000079c    00000014                   : hibernate.obj (.text:HibernateRTCEnable)
+                  000007b0    00000014                   : hibernate.obj (.text:HibernateRequest)
+                  000007c4    00000012                   : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  000007d6    00000002     --HOLE-- [fill = 0]
+                  000007d8    00000010                   : hibernate.obj (.text:HibernateRTCMatchSet)
+                  000007e8    00000010                   : hibernate.obj (.text:_HibernateWriteComplete)
+                  000007f8    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000804    00000006     driverlib.lib : gpio.obj (.text:GPIOPinWrite)
+                  0000080a    00000006                   : sysctl.obj (.text:SysCtlDelay)
+                  00000810    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000814    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    00000818    0000006c     
+                  00000818    0000006c     driverlib.lib : sysctl.obj (.const:g_pui32Xtals)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       148    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         160    620       0      
+                                                              
+    C:/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                     574    108       0      
+       gpio.obj                       396    0         0      
+       hibernate.obj                  260    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1230   108       0      
+                                                              
+    C:\ti\ccsv8\tools\compiler\ti-cgt-arm_18.1.3.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            48     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         56     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   1446   728       512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                        
+-------   ----                        
+00000815  C$$EXIT                     
+0000072d  GPIODirModeSet              
+0000026d  GPIOPadConfigSet            
+000007c5  GPIOPinTypeGPIOInput        
+00000757  GPIOPinTypeGPIOOutput       
+00000805  GPIOPinWrite                
+00000789  HibernateEnableExpClk       
+00000771  HibernateGPIORetentionEnable
+0000079d  HibernateRTCEnable          
+000007d9  HibernateRTCMatchSet        
+00000701  HibernateRTCSet             
+000007b1  HibernateRequest            
+00000639  HibernateWakeSet            
+000007f9  ResetISR                    
+000003a1  SysCtlClockGet              
+000004b1  SysCtlClockSet              
+0000080b  SysCtlDelay                 
+0000069d  SysCtlPeripheralEnable      
+20000200  __STACK_END                 
+00000200  __STACK_SIZE                
+20000200  __STACK_TOP                 
+ffffffff  __TI_pprof_out_hndl         
+ffffffff  __TI_prof_data_size         
+ffffffff  __TI_prof_data_start        
+00000000  __TI_static_base__          
+ffffffff  __binit__                   
+ffffffff  __c_args__                  
+UNDEFED   __mpu_init                  
+20000000  __stack                     
+000006d1  _c_int00_noinit_noargs      
+00000811  _system_pre_init            
+00000815  abort                       
+ffffffff  binit                       
+00000000  g_pfnVectors                
+000005a5  main                        
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                        
+-------   ----                        
+00000000  __TI_static_base__          
+00000000  g_pfnVectors                
+00000200  __STACK_SIZE                
+0000026d  GPIOPadConfigSet            
+000003a1  SysCtlClockGet              
+000004b1  SysCtlClockSet              
+000005a5  main                        
+00000639  HibernateWakeSet            
+0000069d  SysCtlPeripheralEnable      
+000006d1  _c_int00_noinit_noargs      
+00000701  HibernateRTCSet             
+0000072d  GPIODirModeSet              
+00000757  GPIOPinTypeGPIOOutput       
+00000771  HibernateGPIORetentionEnable
+00000789  HibernateEnableExpClk       
+0000079d  HibernateRTCEnable          
+000007b1  HibernateRequest            
+000007c5  GPIOPinTypeGPIOInput        
+000007d9  HibernateRTCMatchSet        
+000007f9  ResetISR                    
+00000805  GPIOPinWrite                
+0000080b  SysCtlDelay                 
+00000811  _system_pre_init            
+00000815  C$$EXIT                     
+00000815  abort                       
+20000000  __stack                     
+20000200  __STACK_END                 
+20000200  __STACK_TOP                 
+ffffffff  __TI_pprof_out_hndl         
+ffffffff  __TI_prof_data_size         
+ffffffff  __TI_prof_data_start        
+ffffffff  __binit__                   
+ffffffff  __c_args__                  
+ffffffff  binit                       
+UNDEFED   __mpu_init                  
+
+[35 symbols]
